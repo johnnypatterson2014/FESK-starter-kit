@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "./SideNavToggle.css";
-import SideNavToggle from '@/app/SideNavToggle';
+import "@/components/SideNavToggle.css";
+import SideNavToggle from '@/components/SideNavToggle';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,18 +19,13 @@ export const metadata: Metadata = {
   description: "FESK app",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en" data-theme="sunset">
       <head>
 
       </head>
       <body>
-
 
         <nav id="sidebar">
           <ul>
