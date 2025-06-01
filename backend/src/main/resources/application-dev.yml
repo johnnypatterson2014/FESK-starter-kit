@@ -1,0 +1,9 @@
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+spring:
+  config:
+    import: "optional:classpath:secrets.yml"
+
+name: test-YAML
