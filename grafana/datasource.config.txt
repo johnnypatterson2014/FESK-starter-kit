@@ -1,0 +1,12 @@
+
+Loki
+http://loki:3100
+
+Prometheus
+http://prometheus:9090
+
+tempo
+http://tempo:3200
+
+
+
