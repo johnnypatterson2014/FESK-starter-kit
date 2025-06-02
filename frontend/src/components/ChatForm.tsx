@@ -3,25 +3,26 @@
 import { Button, TextArea } from '@apideck/components'
 import { useState } from 'react'
 // import { sendSpringMessage } from 'utils/sendSpringMessage'
-import { useSpringMessages } from '@/utils/useSpringMessages'
+import { chatMessages } from '@/components/ChatMessageWrapper'
 
-const SpringMessageForm = () => {
+const ChatForm = () => {
   const [content, setContent] = useState('')
-  const { addSpringMessage } = useSpringMessages()
+  const { addChatMessage } = chatMessages()
 
   const handleSubmit = async (e?: any) => {
     e?.preventDefault()
-    addSpringMessage(content)
+    addChatMessage(content)
     setContent('')
     // const reply = await sendSpringMessage([])
     // setContent(reply.data.result.output.text)
-    // addSpringMessage(reply)
+    // addChatMessage(reply)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="my-card text-sm">
-        <div className="flex-none">
+        <label className='fesk-card-label'>Chat with LLM</label>
+        <div>
           <TextArea
             id="my-text-area"
             name="content"
@@ -34,10 +35,8 @@ const SpringMessageForm = () => {
           />
         </div>
         <div>
-          <div className="flex-1">
-            <Button className="btn btn-soft btn-primary" type="submit">
-              Send
-            </Button>
+          <div>
+            <button className="btn btn-xs btn-primary">Send</button>
           </div>
         </div>
       </div>
@@ -45,4 +44,4 @@ const SpringMessageForm = () => {
   )
 }
 
-export default SpringMessageForm
+export default ChatForm

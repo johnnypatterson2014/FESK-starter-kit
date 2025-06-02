@@ -1,18 +1,20 @@
+'use client';
+
 import { useToast } from '@apideck/components'
 import { ChatCompletionRequestMessage } from 'openai'
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
-import { sendMessage } from './sendMessage'
+import { sendChatRequest } from '../app/lib/sendChatRequest'
 
 interface ContextProps {
   messages: ChatCompletionRequestMessage[]
-  addMessage: (content: string) => Promise<void>
+  addChatMessage: (content: string) => Promise<void>
   isLoadingAnswer: boolean
 }
 
 const ChatsContext = createContext<Partial<ContextProps>>({})
 
-export function MessagesProvider({ children }: { children: ReactNode }) {
-  const { addToast } = useToast()
+export function ChatMessageWrapper({ children }: { children: ReactNode }) {
+  // const { addToast } = useToast()
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
   const [isLoadingAnswer, setIsLoadingAnswer] = useState(false)
 
@@ -36,7 +38,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     }
   }, [messages?.length, setMessages])
 
-  const addMessage = async (content: string) => {
+  const addChatMessage = async (content: string) => {
     setIsLoadingAnswer(true)
     try {
       const newMessage: ChatCompletionRequestMessage = {
@@ -48,26 +50,31 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
       // Add the user message to the state so we can see it immediately
       setMessages(newMessages)
 
-      const { data } = await sendMessage(newMessages)
-      const reply = data.choices[0].message
+      const { data } = await sendChatRequest(newMessage)
+      const reply = data.answer
+
+      const responseMessage: ChatCompletionRequestMessage = {
+        role: 'assistant',
+        content: reply
+      }
 
       // Add the assistant message to the state
-      setMessages([...newMessages, reply])
+      setMessages([...newMessages, responseMessage])
     } catch (error) {
       // Show error when something goes wrong
-      addToast({ title: 'An error occurred', type: 'error' })
+      // addToast({ title: 'An error occurred', type: 'error' })
     } finally {
       setIsLoadingAnswer(false)
     }
   }
 
   return (
-    <ChatsContext.Provider value={{ messages, addMessage, isLoadingAnswer }}>
+    <ChatsContext.Provider value={{ messages, addChatMessage, isLoadingAnswer }}>
       {children}
     </ChatsContext.Provider>
   )
 }
 
-export const useMessages = () => {
+export const chatMessages = () => {
   return useContext(ChatsContext) as ContextProps
 }

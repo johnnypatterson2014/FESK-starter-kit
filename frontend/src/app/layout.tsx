@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css";
+import "./styles/fesk.css";
 import "@/components/SideNavToggle.css";
-import SideNavToggle from '@/components/SideNavToggle';
+import SideNav from '@/components/SideNav';
+import StickyHeader from '@/components/StickyHeader';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,119 +23,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en" data-theme="sunset">
+    <html lang="en" data-theme="dim">
       <head>
 
       </head>
       <body>
-
-        <nav id="sidebar">
-          <ul>
-            <li>
-              <span className="logo">launchpad</span>
-
-              <SideNavToggle />
-
-              {/* <button id="toggle-btn" className="btn" onClick={toggleSidebar}>Default</button> */}
-
-
-            </li>
-
-            <li className="active text-sm">
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" className="css-1p0t9ol-Icon"><path d="M20,8h0L14,2.74a3,3,0,0,0-4,0L4,8a3,3,0,0,0-1,2.26V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V10.25A3,3,0,0,0,20,8ZM14,20H10V15a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm5-1a1,1,0,0,1-1,1H16V15a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v5H6a1,1,0,0,1-1-1V10.25a1,1,0,0,1,.34-.75l6-5.25a1,1,0,0,1,1.32,0l6,5.25a1,1,0,0,1,.34.75Z"></path></svg>
-                <span>Home</span>
-              </a>
-            </li>
-
-            <li className="text-sm">
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" className="css-1p0t9ol-Icon"><path d="M10,13H3a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,20H4V15H9ZM21,2H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,9H15V4h5Zm1,4H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,21,13Zm-1,7H15V15h5ZM10,2H3A1,1,0,0,0,2,3v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,10,2ZM9,9H4V4H9Z"></path></svg>
-                <span>Dashboard</span>
-              </a>
-            </li>
-
-            <li className="text-sm">
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" className="css-1p0t9ol-Icon"><path d="M6,13H2a1,1,0,0,0-1,1v8a1,1,0,0,0,1,1H6a1,1,0,0,0,1-1V14A1,1,0,0,0,6,13ZM5,21H3V15H5ZM22,9H18a1,1,0,0,0-1,1V22a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V10A1,1,0,0,0,22,9ZM21,21H19V11h2ZM14,1H10A1,1,0,0,0,9,2V22a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V2A1,1,0,0,0,14,1ZM13,21H11V3h2Z"></path></svg>
-                <span>Metrics</span>
-              </a>
-            </li>
-            <li className="text-sm">
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" className="css-1p0t9ol-Icon"><path d="M21.32,9.55l-1.89-.63.89-1.78A1,1,0,0,0,20.13,6L18,3.87a1,1,0,0,0-1.15-.19l-1.78.89-.63-1.89A1,1,0,0,0,13.5,2h-3a1,1,0,0,0-.95.68L8.92,4.57,7.14,3.68A1,1,0,0,0,6,3.87L3.87,6a1,1,0,0,0-.19,1.15l.89,1.78-1.89.63A1,1,0,0,0,2,10.5v3a1,1,0,0,0,.68.95l1.89.63-.89,1.78A1,1,0,0,0,3.87,18L6,20.13a1,1,0,0,0,1.15.19l1.78-.89.63,1.89a1,1,0,0,0,.95.68h3a1,1,0,0,0,.95-.68l.63-1.89,1.78.89A1,1,0,0,0,18,20.13L20.13,18a1,1,0,0,0,.19-1.15l-.89-1.78,1.89-.63A1,1,0,0,0,22,13.5v-3A1,1,0,0,0,21.32,9.55ZM20,12.78l-1.2.4A2,2,0,0,0,17.64,16l.57,1.14-1.1,1.1L16,17.64a2,2,0,0,0-2.79,1.16l-.4,1.2H11.22l-.4-1.2A2,2,0,0,0,8,17.64l-1.14.57-1.1-1.1L6.36,16A2,2,0,0,0,5.2,13.18L4,12.78V11.22l1.2-.4A2,2,0,0,0,6.36,8L5.79,6.89l1.1-1.1L8,6.36A2,2,0,0,0,10.82,5.2l.4-1.2h1.56l.4,1.2A2,2,0,0,0,16,6.36l1.14-.57,1.1,1.1L17.64,8a2,2,0,0,0,1.16,2.79l1.2.4ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"></path></svg>
-                <span>Settings</span>
-              </a>
-            </li>
-
-          </ul>
-        </nav>
-
+        <SideNav />
 
         <div>
-
-          <div className="sticky top-0 z-30 w-full">
-
-            <div id="myheader" className="flex w-full">
-
-              <div className="flex-1">
-
-                <div className="breadcrumbs text-sm">
-                  <ul>
-                    <li>
-                      <a href="#">Home</a>
-                    </li>
-                    <li>
-                      <a href="#">Dashboard</a>
-                    </li>
-                    <li>
-                      <span className="bc-active">Metrics</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="flex-none text-sm pt-2">
-
-                {/* <a href="#">Sign in</a> */}
-
-                {/* <a class="framer-JFlzh framer-aU3hP framer-26mb0f framer-v-3y8mml framer-1xyivzk" data-border="true" style="--border-bottom-width: 1px; --border-color: var(--token-5970a3c6-0f13-482e-8fb6-b8cb7d627b04, rgba(216, 231, 242, 0.07)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; backdrop-filter: blur(5px); background: linear-gradient(180deg, var(--token-eb09dbbf-ef85-4b7f-81a5-44e9b062efb7, rgb(4, 7, 13)) 0%, var(--token-5970a3c6-0f13-482e-8fb6-b8cb7d627b04, rgba(255, 255, 255, 0.07)) 100%); border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.68) 0px -0.48175px 0.48175px -1.25px inset, rgba(0, 0, 0, 0.6) 0px -1.83083px 1.83083px -2.5px inset, rgba(0, 0, 0, 0.24) 0px -8px 8px -3.75px inset; opacity: 1; will-change: auto;" href="https://app.aivah.ai/" target="_blank" rel="noopener" data-framer-name="desktop icon right"><div class="framer-1t4k9dk-container" style="opacity:0.8"><!--$--><div style="display:contents"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" color="var(--token-a85af9cb-7834-4006-a277-2dd1295ae376, rgb(255, 255, 255))" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-a85af9cb-7834-4006-a277-2dd1295ae376, rgb(255, 255, 255)); color: var(--token-a85af9cb-7834-4006-a277-2dd1295ae376, rgb(255, 255, 255)); flex-shrink: 0;"><g color="var(--token-a85af9cb-7834-4006-a277-2dd1295ae376, rgb(255, 255, 255))" weight="regular"><path d="M141.66,133.66l-40,40a8,8,0,0,1-11.32-11.32L116.69,136H24a8,8,0,0,1,0-16h92.69L90.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,141.66,133.66ZM200,32H136a8,8,0,0,0,0,16h56V208H136a8,8,0,0,0,0,16h64a8,8,0,0,0,8-8V40A8,8,0,0,0,200,32Z"></path></g></svg></div><!--/$--></div><div class="framer-1bph33e" data-framer-name="Label" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; --extracted-r6o4lv: var(--token-a85af9cb-7834-4006-a277-2dd1295ae376, rgb(255, 255, 255)); --framer-paragraph-spacing: 0px; opacity: 0.8; transform: none; will-change: transform;" data-framer-component-type="RichTextContainer"><p class="framer-text framer-styles-preset-dmuy5d" data-styles-preset="LC6TE31cM" style="--framer-text-color:var(--extracted-r6o4lv, var(--token-a85af9cb-7834-4006-a277-2dd1295ae376, rgb(255, 255, 255)))">Login </p></div></a> */}
-
-                <button className="btn btn-xs btn-soft btn-secondary">Sign in</button>
-
-                {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dddddd" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v18h-6M10 17l5-5-5-5M13.8 12H3" /></svg> */}
-
-              </div>
-
-            </div>
-
-            <div id="mytoolbar" className="flex w-full">
-
-              <div className="flex-1">
-
-              </div>
-
-              <div className="flex-none text-sm">
-
-                <img src='mockup-buttons.jpg' width={180} />
-
-              </div>
-
-            </div>
-
-          </div>
-
+          <StickyHeader />
 
           <div id="my-container">
 
-
             {children}
-
 
           </div>
 
         </div>
-
       </body>
     </html>
   );

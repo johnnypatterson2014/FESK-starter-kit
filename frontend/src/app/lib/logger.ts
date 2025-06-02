@@ -42,7 +42,7 @@ const infoFilter = winston.format((info, opts) => {
 const logger = winston.createLogger({
     level: process.env.LOG_LEVEL || 'info',
     defaultMeta: {
-        service: 'nextjs ui',
+        service: 'fesk-core-ui',
     },
     format: combine(errors({ stack: true }), timestamp(), json()),
     transports: [
@@ -69,7 +69,7 @@ const logger = winston.createLogger({
             interval: 5,
             labels: {
                 job: 'nextjs',
-                service: 'nextjs-ui',
+                service: 'fesk-core-ui',
             }
         }),
         // new winston.transports.Http({
