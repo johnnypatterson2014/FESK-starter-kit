@@ -21,20 +21,22 @@ const SpringMessageForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="my-card text-sm">
-        <TextArea
-          name="content"
-          placeholder="Enter your message here..."
-          rows={3}
-          value={content}
-          autoFocus
-          className="!p-3 text-gray-900 border-0 ring-1 dark:ring-0 ring-gray-300/40 focus:ring-gray-300/80 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800/80 backdrop-blur shadow-none"
-          onChange={(e: any) => setContent(e.target.value)}
-        />
+        <div className="flex-none">
+          <TextArea
+            id="my-text-area"
+            name="content"
+            placeholder="Enter your message here..."
+            rows={3}
+            value={content}
+            autoFocus
+            className="!p-3 text-gray-300"
+            onChange={(e: any) => setContent(e.target.value)}
+          />
+        </div>
         <div>
-          <div className="flex space-x-3">
-            <Button className="" type="submit">
+          <div className="flex-1">
+            <Button className="btn btn-soft btn-primary" type="submit">
               Send
-
             </Button>
           </div>
         </div>

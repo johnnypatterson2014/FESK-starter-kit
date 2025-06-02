@@ -11,49 +11,35 @@ const SpringMessageList = () => {
         const isUser = message.role === 'user'
 
         return (
-          <div
-            id={`message-${i}`}
-            className={`flex mb-4 fade-up ${isUser ? 'justify-end' : 'justify-start'} ${i === 1 ? 'max-w-md' : ''
-              }`}
-            key={message.content}
-          >
-            {!isUser && (
-              <img
-                src="https://www.teamsmart.ai/next-assets/team/ai.jpg"
-                className="w-9 h-9 rounded-full"
-                alt="avatar"
-              />
-            )}
-            <div
-              style={{ maxWidth: 'calc(100% - 45px)' }}
-              className={`group relative px-3 py-2 rounded-lg ${isUser
-                ? 'mr-2 bg-gradient-to-br from-primary-700 to-primary-600 text-white'
-                : 'ml-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200'
-                }`}
-            >
-              {message.content}
+          <div id={`message-${i}`} className='my-card-chat' key={message.content}>
+            <div className={`flex chat-message`} >
+              {!isUser && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dddddd" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5" /></svg>
+              )}
+              {isUser && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dddddd" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5" /></svg>
+              )}
+              <div
+                style={{ maxWidth: 'calc(100% - 45px)' }}
+                className={`rounded-sm ${isUser
+                  ? 'ml-2 text-blue-300'
+                  : 'ml-2 text-gray-300'
+                  }`}
+              >
+                {message.content}
+              </div>
             </div>
-            {isUser && (
-              <img
-                src="https://www.teamsmart.ai/next-assets/profile-image.png"
-                className="w-9 h-9 rounded-full cursor-pointer"
-                alt="avatar"
-              />
-            )}
           </div>
         )
       })}
+
       {isLoadingAnswer && (
-        <div className="flex justify-start mb-4">
-          <img
-            src="https://www.teamsmart.ai/next-assets/team/ai.jpg"
-            className="w-9 h-9 rounded-full"
-            alt="avatar"
-          />
-          <div className="loader ml-2 p-2.5 px-4 bg-gray-200 dark:bg-gray-800 rounded-full space-x-1.5 flex justify-between items-center relative">
-            <span className="block w-3 h-3 rounded-full"></span>
-            <span className="block w-3 h-3 rounded-full"></span>
-            <span className="block w-3 h-3 rounded-full"></span>
+        <div className='flex my-card-chat'>
+          <div className='flex-none ml-2'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dddddd" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5" /></svg>
+          </div>
+          <div className="flex-1 loader-ball-9">
+            <div></div>
           </div>
         </div>
       )}

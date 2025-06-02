@@ -6,9 +6,13 @@ import { SpringMessagesProvider } from '@/utils/useSpringMessages'
 const IndexSpringPage: NextPage = () => {
   return (
     <SpringMessagesProvider>
-      <SpringMessageList />
-      <div>
-        <SpringMessageForm />
+      <div className='flex'>
+        <div className='flex-1'>
+          <SpringMessageList />
+        </div>
+        <div className='flex-1'>
+          <SpringMessageForm />
+        </div>
       </div>
     </SpringMessagesProvider>
   )
