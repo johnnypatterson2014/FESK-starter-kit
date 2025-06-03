@@ -2,8 +2,12 @@
 
 import SideNavToggle from '@/components/SideNavToggle';
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 export default function SideNav() {
+
+    const pathname = usePathname();
+    // console.log(pathname);
 
     return (
         <>
@@ -23,7 +27,8 @@ export default function SideNav() {
                     <li>
 
                         <ul id="nav-menu-wrapper" className="menu w-full">
-                            <li className="active text-sm flex-1">
+
+                            <li className={pathname === "/" ? "active text-sm flex-1" : "text-sm flex-1"}>
                                 <Link id='link-1' href={'/'}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" /><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" /></svg>
                                     <span>Home</span>
@@ -31,7 +36,7 @@ export default function SideNav() {
 
                             </li>
 
-                            <li className="text-sm flex-1">
+                            <li className={pathname === "/chat" ? "active text-sm flex-1" : "text-sm flex-1"}>
                                 <Link id='link-1' href={'/chat'}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                                     <span>Chat</span>
@@ -47,8 +52,8 @@ export default function SideNav() {
                                         <span>Documentation</span>
                                     </summary>
                                     <ul className='ml-7'>
-                                        <li>
-                                            <Link id='link-1' href={'#'}>
+                                        <li className={pathname === "/documentation/technology-stack" ? "active" : ""}>
+                                            <Link id='link-1' href={'/documentation/technology-stack'}>
                                                 technology stack
                                             </Link>
                                         </li>

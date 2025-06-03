@@ -1,6 +1,18 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from "next/navigation";
+
 export default function StickyHeader() {
+
+    const pathname = usePathname();
+    const pathSegments = pathname.split('/').filter(segment => segment);
+
+    const breadcrumbs = pathSegments.map((segment, index) => {
+        const path = `/${pathSegments.slice(0, index + 1).join('/')}`;
+        const label = segment.charAt(0).toUpperCase() + segment.slice(1);
+        return { label, path };
+    });
 
     return (
         <>
@@ -12,16 +24,22 @@ export default function StickyHeader() {
                     <div className="flex-1">
 
                         <div className="breadcrumbs text-sm">
+
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
-                                <li>
-                                    <a href="#">Dashboard</a>
-                                </li>
-                                <li>
-                                    <span className="bc-active">Metrics</span>
-                                </li>
+
+                                {breadcrumbs.map((item, index) => (
+                                    <li key={index}>
+                                        {index === breadcrumbs.length - 1 ? (
+                                            <span className='bc-active'>{item.label}</span>
+                                        ) : (
+                                            <Link href={item.path}>{item.label}</Link>
+                                        )}
+                                    </li>
+                                ))}
+
                             </ul>
                         </div>
                     </div>
