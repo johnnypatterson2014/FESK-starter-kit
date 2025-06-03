@@ -10,7 +10,7 @@ export default function StickyHeader() {
 
     const breadcrumbs = pathSegments.map((segment, index) => {
         const path = `/${pathSegments.slice(0, index + 1).join('/')}`;
-        const label = segment.charAt(0).toUpperCase() + segment.slice(1);
+        const label = segment.charAt(0) + segment.slice(1).replace(/-/g, " ");
         return { label, path };
     });
 
@@ -27,7 +27,7 @@ export default function StickyHeader() {
 
                             <ul>
                                 <li>
-                                    <a href="/">Home</a>
+                                    <a href="/">home</a>
                                 </li>
 
                                 {breadcrumbs.map((item, index) => (
