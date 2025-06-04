@@ -1,6 +1,45 @@
+.fesk-card-h1 {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 49px;
+    color: #ffffff;
+}
+
+.fesk-card-h2 {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 29px;
+    color: #ffffff;
+}
+
+.fesk-card-content {
+    padding-bottom: 20px;
+}
+
+.width-1000 {
+    width: 1600px;
+}
+
+.fesk-content-list {
+    list-style-type: square;
+    padding: 5px;
+    margin-left: 30px;
+}
+
+
+
+
+
+
+
+
 #myheader {
-    padding-top: 0em;
-    padding-bottom: 0em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     padding-left: 0.5em;
     padding-right: 0.5em;
     border-bottom: 1px solid rgba(204, 204, 220, 0.305);
@@ -128,6 +167,14 @@
     background-color: #111217;
 }
 
+.chat-text-area-wrapper {
+    margin-top: 15px;
+}
+
+.chat-submit {
+    margin-top: 5px;
+}
+
 .fesk-card-label {
     padding: 0 0 10px 0;
     margin-left: 2px;
@@ -158,18 +205,56 @@
     display: inline-block
 }
 
-.error-wrapper {
+.main-content-wrapper {
     box-sizing: border-box;
     border: 0 solid;
     margin: 0;
-    padding: 0;
+    padding: 150px 0 0 0;
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     height: 80vh;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+}
+
+.article-wrapper {
+    box-sizing: border-box;
+    border: 0 solid;
+    margin: 0;
+    padding: 60px 0 100px 0;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.article-body-wrapper {
+    width: 700px;
+    border: 0 solid;
+}
+
+.article-body-wrapper p {
+    margin-bottom: 15px;
+}
+
+.article-title {
+    margin: 0 20px 0 0;
+    padding: 0 23px 0 0;
+    font-size: 24px;
+    font-weight: 500;
+    vertical-align: top;
+    line-height: 49px;
+    color: #ffffff;
+}
+
+.article-body {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    color: #d6d5d5;
 }
 
 

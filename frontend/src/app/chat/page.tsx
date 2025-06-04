@@ -5,23 +5,26 @@ import { ChatMessageWrapper } from '@/components/ChatMessageWrapper'
 
 const IndexSpringPage: NextPage = () => {
   return (
-    <ChatMessageWrapper>
-      <div className='flex'>
-        <div className='flex-1'>
-          <ChatHistory />
+    <>
+      <div className="article-wrapper">
 
-          <ChatForm />
-        </div>
-        <div className='flex-1'>
-          <div className="my-card">
-            <label className='fesk-card-label'>Trace</label>
-            <div className='text-sm pl-1'>
-              Coming soon - real-time telemetry statistics for chat conversation. Can also show sources.
+        <div className="article-body-wrapper">
+
+          <ChatMessageWrapper>
+            <div className='flex'>
+              <div className='flex-1'>
+                <div className="my-card text-sm">
+                  <ChatHistory />
+                  <ChatForm />
+                </div>
+              </div>
             </div>
-          </div>
+          </ChatMessageWrapper>
+
         </div>
+
       </div>
-    </ChatMessageWrapper>
+    </>
   )
 }
 

@@ -5,10 +5,10 @@ export default function NotFound() {
     <div className="main-content-wrapper">
       <div>
         <h1 className="fesk-error-h1">
-          404
+          Coming Soon
         </h1>
         <div className="inline-block">
-          <h2 className="fesk-error-h2">This page could not be found.</h2>
+          <h2 className="fesk-error-h2">This page is under construction.</h2>
         </div>
       </div>
     </div>

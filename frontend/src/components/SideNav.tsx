@@ -59,36 +59,36 @@ export default function SideNav() {
                                         </li>
                                     </ul>
                                     <ul className='ml-7'>
-                                        <li>
-                                            <Link id='link-2' href={'#'}>
+                                        <li className={pathname === "/documentation/architecture" ? "active" : ""}>
+                                            <Link id='link-1' href={'/documentation/architecture'}>
                                                 architecture
                                             </Link>
                                         </li>
                                     </ul>
                                     <ul className='ml-7'>
                                         <li>
-                                            <Link id='link-2' href={'#'}>
+                                            <Link id='link-2' href={'/documentation/coming-soon'}>
                                                 observability
                                             </Link>
                                         </li>
                                     </ul>
                                     <ul className='ml-7'>
                                         <li>
-                                            <Link id='link-2' href={'#'}>
+                                            <Link id='link-2' href={'/documentation/coming-soon'}>
                                                 test driven development
                                             </Link>
                                         </li>
                                     </ul>
                                     <ul className='ml-7'>
                                         <li>
-                                            <Link id='link-2' href={'#'}>
+                                            <Link id='link-2' href={'/documentation/coming-soon'}>
                                                 software design best practices
                                             </Link>
                                         </li>
                                     </ul>
                                     <ul className='ml-7'>
                                         <li>
-                                            <Link id='link-2' href={'#'}>
+                                            <Link id='link-2' href={'/documentation/coming-soon'}>
                                                 agentic design patterns
                                             </Link>
                                         </li>

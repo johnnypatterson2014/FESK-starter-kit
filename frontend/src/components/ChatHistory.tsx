@@ -6,8 +6,8 @@ const ChatHistory = () => {
   const { messages, isLoadingAnswer } = chatMessages()
 
   return (
-    <div className="my-card text-sm">
-      <label className='fesk-card-label'>Chat conversation</label>
+    <>
+      <label className='fesk-card-h2'>Chat with LLM</label>
       {messages?.map((message, i) => {
         const isUser = message.role === 'user'
 
@@ -36,22 +36,23 @@ const ChatHistory = () => {
 
       {isLoadingAnswer && (
         <div className='flex my-card-chat'>
-          <div className='flex-none ml-2'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6e9fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5" /></svg>
+          <div className="flex chat-message" >
+            <div className='flex-none'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6e9fff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5" /></svg>
+            </div>
+
+            <div className="loader-line-1">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+
           </div>
-
-          <div className="loader-line-1">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-
-
         </div>
       )}
-    </div>
+    </>
   )
 }
 

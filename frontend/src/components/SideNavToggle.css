@@ -59,7 +59,7 @@ body {
   svg {
     fill: #181b1f;
     stroke: #6e9fff;
-    stroke-width: 2;
+    strokeWidth: 2;
   }
 }
 

@@ -19,9 +19,8 @@ const ChatForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="my-card text-sm">
-        <label className='fesk-card-label'>Chat with LLM</label>
+    <div className='chat-text-area-wrapper'>
+      <form onSubmit={handleSubmit}>
         <div>
           <TextArea
             id="my-text-area"
@@ -30,17 +29,20 @@ const ChatForm = () => {
             rows={3}
             value={content}
             autoFocus
-            className="!p-3 text-gray-300"
+            className="!p-3 text-gray-300 focus:outline-none focus:ring-1"
             onChange={(e: any) => setContent(e.target.value)}
           />
         </div>
-        <div>
+        <div className='chat-submit'>
           <div>
-            <button className="btn btn-xs btn-primary">Send</button>
+            {/* <button className="btn btn-xs btn-primary">Send</button> */}
+            <button className="btn btn-sm btn-outline btn-primary">
+              send
+            </button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }
 
