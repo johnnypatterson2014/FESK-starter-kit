@@ -40,8 +40,9 @@
 #myheader {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    padding-left: 0.5em;
+    padding-left: 1.5em;
     padding-right: 0.5em;
+    margin: 0px;
     border-bottom: 1px solid rgba(204, 204, 220, 0.305);
     background-color: var(--background);
 }

@@ -36,7 +36,7 @@ spring:
         arguments: -v
         command: down
   application:
-    name: spring-ai-examples
+    name: fesk-springboot
   threads:
     virtual:
       enabled: 'true'
